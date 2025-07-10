@@ -1,0 +1,14 @@
+cnt = env.context
+c_action = "na"
+for key, value in cnt.items():
+    if (str(key) == 'params'):
+        dic = dict(value)
+        act = dic['action']
+        c_action = act
+
+if (str(c_action) == "customer-invoices"):
+    if records:
+        for record in records :
+            if record.x_studio_letters_of_guarantees and record.x_studio_letters_of_guarantees.x_studio_amount:
+                record.write({'x_studio_opap_transaction_value': record.x_studio_letters_of_guarantees.x_studio_amount })
+                
