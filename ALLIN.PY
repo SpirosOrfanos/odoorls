@@ -5,6 +5,7 @@ for record in records:
         if (move_type == 'out_invoice'):
             invoice_date = record.invoice_date
             letters_of_guarantees = record.x_studio_letters_of_guarantees
+            #LOG actions
             if invoice_date and letters_of_guarantees and letters_of_guarantees.x_studio_issue_date and letters_of_guarantees.x_studio_issue_date > invoice_date:
                 raise UserError(f"Invoice Date {invoice_date} muset be after Letter of Guarantee Issue date {letters_of_guarantees.x_studio_issue_date}.")
             if record.x_studio_letters_of_guarantees:
@@ -17,6 +18,7 @@ for record in records:
         if (move_type == 'out_refund'):
             invoice_date = record.invoice_date
             letters_of_guarantees = record.x_studio_letters_of_guarantees
+            #LOG actions
             if invoice_date and letters_of_guarantees and letters_of_guarantees.x_studio_issue_date and letters_of_guarantees.x_studio_issue_date > invoice_date:
                 raise UserError(f"Invoice date {invoice_date} must be after {letters_of_guarantees.x_studio_issue_date}")
             if record.x_studio_letters_of_guarantees:
