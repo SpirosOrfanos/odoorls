@@ -21,8 +21,14 @@ for record in records:
                    raise UserError(f"Ending Issue date {check_number.x_studio_ending_date} must be after or equal to Invoice date {invoice_date}.")
                 if (record.x_studio_portfolio):
                   acc = portfolio.x_studio_account
-                  #record.x_studio_check_number.write({'x_studio_portfolio' : portfolio})
+                  record.x_studio_check_number.write({'x_studio_portfolio' : portfolio})
                   if acc:
                       record.write({'account_id': acc.id})  
-                record.write({'credit': check_number.x_studio_check_amount})
+                if (record.credit == 0):
+                    raise UserError(f"Credit must be provided")
+                if (record.credit and check_number.x_studio_check_amount and check_number.x_studio_check_amount!= record.credit):
+                     raise UserError(f"Credit must be  {check_number.x_studio_check_amount} ")
+                    
+                #record.credit = check_number.x_studio_check_amount
+                #record.write({'credit': check_number.x_studio_check_amount})
                
