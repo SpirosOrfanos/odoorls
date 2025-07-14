@@ -19,7 +19,7 @@ for record in records:
             if (check_number):
              
                
-                if invoice_date and check_number and check_number.x_studio_issue_date and check_number.x_studio_issue_date >=invoice_date:
+                if invoice_date and check_number and check_number.x_studio_issue_date and check_number.x_studio_issue_date >invoice_date:
                     raise UserError(f"Check Issue date {check_number.x_studio_issue_date} must be before Invoice date {invoice_date}.")
                 
                 if invoice_date and check_number and check_number.x_studio_ending_date and check_number.x_studio_ending_date < invoice_date:
@@ -64,7 +64,7 @@ for record in records:
             if (check_number):
                
                      
-                if invoice_date and check_number and check_number.x_studio_issue_date and check_number.x_studio_issue_date >=invoice_date:
+                if invoice_date and check_number and check_number.x_studio_issue_date and check_number.x_studio_issue_date >invoice_date:
                     raise UserError(f"Check Issue date {check_number.x_studio_issue_date} must be before Invoice date {invoice_date}.")
 
                 if invoice_date and check_number and check_number.x_studio_ending_date and check_number.x_studio_ending_date < invoice_date:
