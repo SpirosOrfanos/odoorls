@@ -7,7 +7,6 @@ for record in records:
             letters_of_guarantees = record.x_studio_letters_of_guarantees
             check_number = record.x_studio_check_number
             portfolio = record.x_studio_portfolio
-            
             if (check_number and letters_of_guarantees):
                 raise UserError("Both Check number and Letter of gurrantee seleted\nThis is not allowed")
             if (check_number and not portfolio):
@@ -17,8 +16,6 @@ for record in records:
 #==============================================================================================
             #CHECKS actions
             if (check_number):
-             
-               
                 if invoice_date and check_number and check_number.x_studio_issue_date and check_number.x_studio_issue_date >invoice_date:
                     raise UserError(f"Check Issue date {check_number.x_studio_issue_date} must be before Invoice date {invoice_date}.")
                 
